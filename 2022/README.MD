@@ -1,0 +1,1 @@
+Run each day with `dotnet run` within that day's folder.
