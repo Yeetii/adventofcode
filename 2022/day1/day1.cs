@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode2022
 {
@@ -17,14 +18,13 @@ namespace AdventOfCode2022
                     int calories = Int32.Parse(line);
                     elveCalories[elveCalories.Count - 1] += calories;
                 }
-            }      
-            int maxCalories = 0;
-            foreach (int elveCal in elveCalories){
-                if (maxCalories < elveCal){
-                    maxCalories = elveCal;
-                }
             }
-            Console.WriteLine(maxCalories);
+            
+            elveCalories.Sort();
+            int[] maxCalories = {elveCalories[elveCalories.Count -1], elveCalories[elveCalories.Count-2] ,elveCalories[elveCalories.Count-3]};
+            
+            Console.WriteLine("Calories of no 1 elf: " + elveCalories[elveCalories.Count -1]);
+            Console.WriteLine("Sum of top 3 elves: " + maxCalories.Sum());
         }
     }
 }
