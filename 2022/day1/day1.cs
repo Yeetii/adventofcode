@@ -9,6 +9,15 @@ namespace AdventOfCode2022
         static void Main(string[] args)
         {
             string[] input = System.IO.File.ReadAllLines(@"input.txt");
+            List<int> elveCalories = CalculateElveCalories(input);
+            elveCalories.Sort();
+            int[] maxCalories = {elveCalories[elveCalories.Count -1], elveCalories[elveCalories.Count-2] ,elveCalories[elveCalories.Count-3]};
+            
+            Console.WriteLine("Calories of no 1 elf: " + elveCalories[elveCalories.Count -1]);
+            Console.WriteLine("Sum of top 3 elves: " + maxCalories.Sum());
+        }
+
+        static List<int> CalculateElveCalories(string[] input){
             List<int> elveCalories = new List<int>(){0};
             foreach (string line in input)
             {                
@@ -19,12 +28,7 @@ namespace AdventOfCode2022
                     elveCalories[elveCalories.Count - 1] += calories;
                 }
             }
-            
-            elveCalories.Sort();
-            int[] maxCalories = {elveCalories[elveCalories.Count -1], elveCalories[elveCalories.Count-2] ,elveCalories[elveCalories.Count-3]};
-            
-            Console.WriteLine("Calories of no 1 elf: " + elveCalories[elveCalories.Count -1]);
-            Console.WriteLine("Sum of top 3 elves: " + maxCalories.Sum());
+            return elveCalories;
         }
     }
 }
