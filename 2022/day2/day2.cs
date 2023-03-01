@@ -2,12 +2,12 @@ using System;
 
 namespace AdventOfCode2022
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] _)
         {
-            string[] input = System.IO.File.ReadAllLines(@"input.txt");
-            
+            string[] input = System.IO.File.ReadAllLines("input.txt");
+
             Console.WriteLine(CalculatePartOneScore(input));
             Console.WriteLine(CalculatePartTwoScore(input));
         }
@@ -44,7 +44,6 @@ namespace AdventOfCode2022
             } else {
                 throw new Exception("Hand could not be decoded");
             }
-
         }
 
         static Hand DecideHandFromStrategy(string strategy, Hand opponent){
@@ -96,7 +95,7 @@ namespace AdventOfCode2022
         static int CalculateWinner(Hand opponent, Hand player){
             if (opponent == player){
                 return 3;
-            } else if ((player == Hand.Rock && opponent == Hand.Scissor) || 
+            } else if ((player == Hand.Rock && opponent == Hand.Scissor) ||
                     (player == Hand.Paper && opponent == Hand.Rock) ||
                     (player == Hand.Scissor && opponent == Hand.Paper)){
                 return 6;
